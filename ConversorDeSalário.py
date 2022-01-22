@@ -24,49 +24,52 @@ while True:
     if eventos == sg.WINDOW_CLOSED:
         break
     if eventos == 'calcular':
-        qnt_dias_mes = monthrange(date.today().year, date.today().month)[1]
-        horas_de_trabalho = float(valores['horas'])
-        if valores['combo'] == 'Salário p/hora':
-            if valores['salario'] != '' and valores['horas'] != '':
-                salario_hora = float(valores['salario'])
-                if valores['boxhora']:
-                    print(f'{salario_hora:.2f} R$ por hora')
-                if valores['boxdia']:
-                    print(f'{salario_hora * horas_de_trabalho:.2f} R$ por hora')
-                if valores['boxmes']:
-                    print(f'{(salario_hora * horas_de_trabalho) * qnt_dias_mes:.2f} R$ por hora')
-                if valores['boxano']:
-                    print(f'{((salario_hora * horas_de_trabalho) * qnt_dias_mes) * 365:.2f} R$ por hora')
-        if valores['combo'] == 'Salário p/dia':
-            if valores['salario'] != '' and valores['horas'] != '':
-                salario_dia = float(valores['salario'])
-                if valores['boxhora']:
-                    print(f'{salario_dia / horas_de_trabalho:.2f} RS por hora')
-                if valores['boxdia']:
-                    print(f'{salario_dia:.2f} R$ por dia')
-                if valores['boxmes']:
-                    print(f'{salario_dia * qnt_dias_mes:.2f} R$ por mês')
-                if valores['boxano']:
-                    print(f'{(salario_dia * qnt_dias_mes) * 365:.2f} R$ por ano')
-        if valores['combo'] == 'Salário p/mês':
-            if valores['salario'] != '' and valores['horas'] != '':
-                salario_mensal = float(valores['salario'])
-                if valores['boxhora']:
-                    print(f'{(salario_mensal / qnt_dias_mes) / horas_de_trabalho:.2f} R$ por hora')
-                if valores['boxdia']:
-                    print(f'{salario_mensal / qnt_dias_mes:.2f} R$ por dia')
-                if valores['boxmes']:
-                    print(f'{salario_mensal:.2f} R$ por mês')
-                if valores['boxano']:
-                    print(f'{salario_mensal * 365:.2f} R$ por ano')
-        if valores['combo'] == 'Salário p/ano':
-            if valores['salario'] != '' and valores['horas'] != '':
-                salario_ano = float(valores['salario'])
-                if valores['boxhora']:
-                    print(f'{((salario_ano / 365) / qnt_dias_mes) / horas_de_trabalho:.2f} R$ por hora')
-                if valores['boxdia']:
-                    print(f'{(salario_ano / 365) / qnt_dias_mes:.2f} R$ por dia')
-                if valores['boxmes']:
-                    print(f'{salario_ano / 365:.2f} R$ por mês')
-                if valores['boxano']:
-                    print(f'{salario_ano} R$ por ano')
+        if valores['horas'] != '':
+            qnt_dias_mes = monthrange(date.today().year, date.today().month)[1]
+            horas_de_trabalho = float(valores['horas'])
+            if valores['combo'] == 'Salário p/hora':
+                if valores['salario'] != '' and valores['horas'] != '':
+                    salario_hora = float(valores['salario'])
+                    if valores['boxhora']:
+                        print(f'{salario_hora:.2f} R$ por hora')
+                    if valores['boxdia']:
+                        print(f'{salario_hora * horas_de_trabalho:.2f} R$ por dia')
+                    if valores['boxmes']:
+                        print(f'{(salario_hora * horas_de_trabalho) * qnt_dias_mes:.2f} R$ por mês')
+                    if valores['boxano']:
+                        print(f'{((salario_hora * horas_de_trabalho) * qnt_dias_mes) * 12:.2f} R$ por ano')
+            if valores['combo'] == 'Salário p/dia':
+                if valores['salario'] != '' and valores['horas'] != '':
+                    salario_dia = float(valores['salario'])
+                    if valores['boxhora']:
+                        print(f'{salario_dia / horas_de_trabalho:.2f} RS por hora')
+                    if valores['boxdia']:
+                        print(f'{salario_dia:.2f} R$ por dia')
+                    if valores['boxmes']:
+                        print(f'{salario_dia * qnt_dias_mes:.2f} R$ por mês')
+                    if valores['boxano']:
+                        print(f'{(salario_dia * qnt_dias_mes) * 12:.2f} R$ por ano')
+            if valores['combo'] == 'Salário p/mês':
+                if valores['salario'] != '' and valores['horas'] != '':
+                    salario_mensal = float(valores['salario'])
+                    if valores['boxhora']:
+                        print(f'{(salario_mensal / qnt_dias_mes) / horas_de_trabalho:.2f} R$ por hora')
+                    if valores['boxdia']:
+                        print(f'{salario_mensal / qnt_dias_mes:.2f} R$ por dia')
+                    if valores['boxmes']:
+                        print(f'{salario_mensal:.2f} R$ por mês')
+                    if valores['boxano']:
+                        print(f'{salario_mensal * 12:.2f} R$ por ano')
+            if valores['combo'] == 'Salário p/ano':
+                if valores['salario'] != '' and valores['horas'] != '':
+                    salario_ano = float(valores['salario'])
+                    if valores['boxhora']:
+                        print(f'{((salario_ano / 12) / qnt_dias_mes) / horas_de_trabalho:.2f} R$ por hora')
+                    if valores['boxdia']:
+                        print(f'{(salario_ano / 12) / qnt_dias_mes:.2f} R$ por dia')
+                    if valores['boxmes']:
+                        print(f'{salario_ano / 12:.2f} R$ por mês')
+                    if valores['boxano']:
+                        print(f'{salario_ano} R$ por ano')
+        else:
+            print('Digite os campos corretamente')
